@@ -828,6 +828,30 @@
 <!-- ══════════════════════════════ TAB: TENENCIAS ══════════════════════════════ -->
 <section id="tab-tenencias" class="tab-panel">
 
+  <p class="section-title">Consolidado · Todas las plataformas</p>
+
+  <div class="card" style="margin-bottom:32px;border-color:var(--border2)">
+    <div class="card-title">
+      Posición consolidada
+      <span class="card-title-tag">BALANZ + COCOS + LEMON · 06/03/2026</span>
+    </div>
+    <table class="holdings-table" id="table-consolidated">
+      <thead>
+        <tr>
+          <th>Instrumento</th>
+          <th>Tipo</th>
+          <th>Plataforma</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Valor USD</th>
+          <th>Valor ARS</th>
+          <th style="min-width:130px">Peso %</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
   <p class="section-title">BALANZ Capital · Comitente 1452286</p>
 
   <div class="card" style="margin-bottom:24px">
@@ -1329,6 +1353,78 @@ function renderHoldingsTable(tableId, holdings) {
 renderHoldingsTable('table-balanz', BALANZ_HOLDINGS);
 renderHoldingsTable('table-cocos',  COCOS_HOLDINGS);
 renderHoldingsTable('table-lemon',  LEMON_HOLDINGS);
+
+// ── CONSOLIDATED TABLE ──
+(function() {
+  const ALL_HOLDINGS = [
+    ...BALANZ_HOLDINGS.map(h => ({...h, alyc:'BALANZ'})),
+    ...COCOS_HOLDINGS.map(h  => ({...h, alyc:'COCOS'})),
+    ...LEMON_HOLDINGS.map(h  => ({...h, alyc:'LEMON'})),
+  ];
+
+  // Merge same ticker across platforms (e.g. ARS cash appears in multiple)
+  const merged = {};
+  ALL_HOLDINGS.forEach(h => {
+    const key = h.ticker + '_' + h.alyc; // keep per-platform rows distinct
+    merged[key] = h;
+  });
+  const rows = Object.values(merged);
+  const totalUsd = rows.reduce((s,h) => s + (h.usd||0), 0);
+
+  const tbody = document.querySelector('#table-consolidated tbody');
+  tbody.innerHTML = '';
+
+  // Sort by USD value desc
+  rows.sort((a,b) => (b.usd||0) - (a.usd||0));
+
+  rows.forEach(h => {
+    const pct = totalUsd > 0 ? (h.usd / totalUsd * 100) : 0;
+    const alycClass = h.alyc.toLowerCase();
+    const priceStr = h.precio !== null
+      ? (h.moneda === 'USD' || h.moneda === 'USDT' || h.moneda === 'BTC' || h.moneda === 'LUNA'
+          ? 'u$s ' : '$ ') + fmt(h.precio, 2)
+      : '—';
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>
+        <div class="ticker-pill">
+          <div class="ticker-dot" style="background:${h.color}"></div>
+          <div>
+            <strong>${h.ticker}</strong>
+            <span class="ticker-name">${h.nombre}</span>
+          </div>
+        </div>
+      </td>
+      <td><span style="color:var(--text-dim);font-size:11px">${h.tipo}</span></td>
+      <td><span class="alyc-tag alyc-${alycClass}">${h.alyc}</span></td>
+      <td>${h.cantidad !== null ? fmt(h.cantidad, h.cantidad < 1 ? 8 : 0) : '—'}</td>
+      <td style="color:var(--text-dim)">${priceStr}</td>
+      <td style="color:var(--cyan)">USD ${fmt(h.usd, 2)}</td>
+      <td style="color:var(--text-dim)">$ ${fmt(h.ars)}</td>
+      <td>
+        <div class="alloc-bar">
+          <div class="alloc-bar-track">
+            <div class="alloc-bar-fill" style="width:${pct}%;background:${h.color}"></div>
+          </div>
+          <span class="alloc-pct">${pct.toFixed(1)}%</span>
+        </div>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // Totals
+  const totalArs = rows.reduce((s,h) => s + (h.ars||0), 0);
+  const tr = document.createElement('tr');
+  tr.style.borderTop = '2px solid var(--border2)';
+  tr.innerHTML = `
+    <td colspan="5" style="color:var(--text-dim);font-size:11px;letter-spacing:1px;text-transform:uppercase">TOTAL CONSOLIDADO</td>
+    <td style="color:var(--cyan);font-weight:600">USD ${fmt(totalUsd, 2)}</td>
+    <td style="color:var(--text-dim);font-weight:600">$ ${fmt(totalArs)}</td>
+    <td></td>
+  `;
+  tbody.appendChild(tr);
+})();
 
 // ──────────────────────────────────────────────────────────────────
 // COMPARATIVA BAR CHART
