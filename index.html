@@ -10,24 +10,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   :root {
-    --bg: #080c14;
-    --surface: #0f1521;
-    --surface2: #151d2e;
-    --surface3: #1c2740;
-    --border: #1e2d47;
-    --border2: #243352;
-    --blue: #3b82f6;
-    --blue-dim: #1d4ed8;
-    --cyan: #22d3ee;
-    --gold: #f59e0b;
-    --green: #10b981;
-    --red: #f43f5e;
-    --purple: #a78bfa;
-    --text: #e2e8f0;
-    --text-dim: #94a3b8;
-    --text-muted: #475569;
-    --balanz: #3b82f6;
-    --cocos: #f59e0b;
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #161616;
+    --surface3: #1e1e1e;
+    --border: #1e1e1e;
+    --border2: #2a2a2a;
+    --blue: #6495ed;
+    --blue-dim: #4a6fa5;
+    --cyan: #d4d4d4;
+    --gold: #ffc832;
+    --green: #6dbd8a;
+    --red: #e05c6e;
+    --purple: #b39dfa;
+    --text: #e8e8e8;
+    --text-dim: #888888;
+    --text-muted: #555555;
+    --balanz: #6495ed;
+    --cocos: #ffc832;
     --lemon: #84cc16;
     --font-display: 'Syne', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
@@ -50,8 +50,8 @@
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
     z-index: 0;
@@ -62,7 +62,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(8,12,20,0.92);
+    background: rgba(10,10,10,0.95);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
     padding: 0 32px;
@@ -87,7 +87,7 @@
     color: white;
   }
 
-  .logo span { color: var(--blue); }
+  .logo span { color: var(--text); }
 
   .header-divider {
     width: 1px;
@@ -281,10 +281,10 @@
     margin-top: 4px;
   }
 
-  .badge-blue { background: rgba(59,130,246,0.12); color: var(--blue); }
-  .badge-gold { background: rgba(245,158,11,0.12); color: var(--gold); }
-  .badge-green { background: rgba(16,185,129,0.12); color: var(--green); }
-  .badge-purple { background: rgba(167,139,250,0.12); color: var(--purple); }
+  .badge-blue { background: rgba(100,149,237,0.12); color: var(--blue); }
+  .badge-gold { background: rgba(255,200,50,0.12); color: var(--gold); }
+  .badge-green { background: rgba(109,189,138,0.12); color: var(--green); }
+  .badge-purple { background: rgba(179,157,250,0.12); color: var(--purple); }
 
   /* ── TWO COLUMN LAYOUT ── */
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
@@ -362,7 +362,7 @@
   .holdings-table tr:last-child td { border-bottom: none; }
 
   .holdings-table tr:hover td {
-    background: rgba(30,45,71,0.4);
+    background: rgba(255,255,255,0.03);
   }
 
   .ticker-pill {
@@ -427,9 +427,9 @@
     border-radius: 4px;
   }
 
-  .alyc-balanz { background: rgba(59,130,246,0.12); color: var(--balanz); border: 1px solid rgba(59,130,246,0.2); }
-  .alyc-cocos  { background: rgba(245,158,11,0.12); color: var(--cocos);  border: 1px solid rgba(245,158,11,0.2); }
-  .alyc-lemon  { background: rgba(132,204,22,0.12); color: var(--lemon);  border: 1px solid rgba(132,204,22,0.2); }
+  .alyc-balanz { background: rgba(100,149,237,0.12); color: var(--balanz); border: 1px solid rgba(59,130,246,0.2); }
+  .alyc-cocos  { background: rgba(255,200,50,0.12); color: var(--cocos);  border: 1px solid rgba(245,158,11,0.2); }
+  .alyc-lemon  { background: rgba(132,204,22,0.10); color: var(--lemon);  border: 1px solid rgba(132,204,22,0.2); }
 
   /* ── CHART WRAPPER ── */
   .chart-wrap {
@@ -570,7 +570,7 @@
   }
 
   .mov-table tr:last-child td { border-bottom: none; }
-  .mov-table tbody tr:hover td { background: rgba(30,45,71,0.4); }
+  .mov-table tbody tr:hover td { background: rgba(255,255,255,0.03); }
 
   .amount-pos { color: var(--green); }
   .amount-neg { color: var(--red); }
@@ -584,16 +584,189 @@
     white-space: nowrap;
   }
 
-  .tipo-compra     { background: rgba(16,185,129,0.12); color: #34d399; }
-  .tipo-venta      { background: rgba(244,63,94,0.12);  color: #fb7185; }
-  .tipo-caucion    { background: rgba(167,139,250,0.12); color: var(--purple); }
-  .tipo-dividendo  { background: rgba(245,158,11,0.12);  color: var(--gold); }
-  .tipo-renta      { background: rgba(34,211,238,0.12);  color: var(--cyan); }
-  .tipo-cobro      { background: rgba(59,130,246,0.12);  color: var(--blue); }
-  .tipo-pago       { background: rgba(244,63,94,0.12);   color: #fb7185; }
+  .tipo-compra     { background: rgba(109,189,138,0.12); color: #34d399; }
+  .tipo-venta      { background: rgba(224,92,110,0.12); color: #f08090; }
+  .tipo-caucion    { background: rgba(179,157,250,0.12); color: var(--purple); }
+  .tipo-dividendo  { background: rgba(255,200,50,0.12);  color: var(--gold); }
+  .tipo-renta      { background: rgba(34,211,238,0.12);  color: var(--text); }
+  .tipo-cobro      { background: rgba(100,149,237,0.12);  color: var(--blue); }
+  .tipo-pago       { background: rgba(224,92,110,0.12); color: #f08090; }
   .tipo-otro       { background: rgba(71,85,105,0.2);    color: var(--text-muted); }
 
-  /* ── COMPARATIVA ── */
+  /* ── TENENCIAS FILTERS ── */
+  .ten-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 24px;
+    margin-bottom: 20px;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .filter-group-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border2);
+    background: var(--surface2);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.3px;
+  }
+
+  .chip:hover {
+    border-color: var(--chip-color, var(--blue));
+    color: var(--chip-color, var(--blue));
+  }
+
+  .chip.active {
+    background: color-mix(in srgb, var(--chip-color, var(--cyan)) 12%, transparent);
+    border-color: var(--chip-color, var(--blue));
+    color: var(--chip-color, var(--blue));
+  }
+
+  /* ── SELECTION BAR ── */
+  .sel-bar {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 14px 20px;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, rgba(212,212,212,0.05), rgba(34,211,238,0.05));
+    border: 1px solid rgba(212,212,212,0.2);
+    border-radius: 10px;
+    animation: fadeUp 0.2s ease;
+  }
+
+  .sel-bar.visible { display: flex; }
+
+  .sel-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sel-count {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--cyan);
+  }
+
+  .sel-clear {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    background: none;
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    padding: 3px 9px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .sel-clear:hover { border-color: var(--red); color: var(--red); }
+
+  .sel-stats {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .sel-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .sel-stat-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .sel-stat-val {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* ── INTERACTIVE ROWS ── */
+  .holdings-table tbody tr {
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+
+  .holdings-table tbody tr.selected td {
+    background: rgba(212,212,212,0.05) !important;
+    border-bottom-color: rgba(212,212,212,0.08);
+  }
+
+  .holdings-table tbody tr.selected td:first-child {
+    border-left: 2px solid var(--cyan);
+  }
+
+  .row-check {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 1.5px solid var(--border2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    transition: all 0.12s;
+    background: transparent;
+    color: transparent;
+    flex-shrink: 0;
+  }
+
+  tr.selected .row-check {
+    background: var(--cyan);
+    border-color: var(--text);
+    color: #111;
+  }
+
+  .ten-no-results {
+    text-align: center;
+    padding: 40px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* ── TENENCIAS FILTERS ── */
   .compare-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -764,7 +937,7 @@
     <div class="kpi-card" style="--accent: var(--lemon)">
       <div class="kpi-label">LEMON Cash</div>
       <div class="kpi-value">USD 1.199</div>
-      <div class="kpi-badge" style="background:rgba(132,204,22,0.12);color:var(--lemon)">3 activos crypto</div>
+      <div class="kpi-badge" style="background:rgba(132,204,22,0.08);color:var(--lemon)">3 activos crypto</div>
     </div>
     <div class="kpi-card" style="--accent: var(--purple)">
       <div class="kpi-label">Instrumentos Totales</div>
@@ -812,11 +985,11 @@
         </div>
       </div>
       <div class="legend">
-        <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div>Bonos — USD 1.024 (22.5%)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#6495ed"></div>Bonos — USD 1.024 (22.5%)</div>
         <div class="legend-item"><div class="legend-dot" style="background:#a78bfa"></div>Cedears — USD 734 (16.1%)</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div>Acciones — USD 126 (2.8%)</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div>Cash ARS — USD 1.445 (31.7%)</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#22d3ee"></div>USDT — USD 1.196 (26.3%)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#6dbd8a"></div>Acciones — USD 126 (2.8%)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#ffc832"></div>Cash ARS — USD 1.445 (31.7%)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#d4d4d4"></div>USDT — USD 1.196 (26.3%)</div>
         <div class="legend-item"><div class="legend-dot" style="background:#f97316"></div>BTC — USD 3 (0.07%)</div>
         <div class="legend-item"><div class="legend-dot" style="background:#64748b"></div>Otros — USD ~22 (0.5%)</div>
       </div>
@@ -830,17 +1003,93 @@
 
   <p class="section-title">Consolidado · Todas las plataformas</p>
 
+  <!-- FILTER CHIPS -->
+  <div class="ten-filters">
+    <div class="filter-group">
+      <span class="filter-group-label">Plataforma</span>
+      <div class="chip-row" id="chips-alyc">
+        <button class="chip active" data-group="alyc" data-val="">Todas</button>
+        <button class="chip" data-group="alyc" data-val="BALANZ" style="--chip-color:#6495ed">BALANZ</button>
+        <button class="chip" data-group="alyc" data-val="COCOS"  style="--chip-color:#ffc832">COCOS</button>
+        <button class="chip" data-group="alyc" data-val="LEMON"  style="--chip-color:#84cc16">LEMON</button>
+      </div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-group-label">Tipo de activo</span>
+      <div class="chip-row" id="chips-tipo">
+        <button class="chip active" data-group="tipo" data-val="">Todos</button>
+        <button class="chip" data-group="tipo" data-val="Bono"       style="--chip-color:#6495ed">Bonos</button>
+        <button class="chip" data-group="tipo" data-val="Cedear"     style="--chip-color:#a78bfa">Cedears</button>
+        <button class="chip" data-group="tipo" data-val="Acción"     style="--chip-color:#6dbd8a">Acciones</button>
+        <button class="chip" data-group="tipo" data-val="Stablecoin" style="--chip-color:#d4d4d4">Stablecoins</button>
+        <button class="chip" data-group="tipo" data-val="Crypto"     style="--chip-color:#f97316">Crypto</button>
+        <button class="chip" data-group="tipo" data-val="Cash"       style="--chip-color:#ffc832">Cash</button>
+      </div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-group-label">Moneda</span>
+      <div class="chip-row" id="chips-moneda">
+        <button class="chip active" data-group="moneda" data-val="">Todas</button>
+        <button class="chip" data-group="moneda" data-val="USD"  style="--chip-color:#d4d4d4">USD</button>
+        <button class="chip" data-group="moneda" data-val="ARS"  style="--chip-color:#ffc832">ARS</button>
+        <button class="chip" data-group="moneda" data-val="USDT" style="--chip-color:#d4d4d4">USDT</button>
+        <button class="chip" data-group="moneda" data-val="BTC"  style="--chip-color:#f97316">BTC</button>
+      </div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-group-label">Exposición</span>
+      <div class="chip-row" id="chips-expo">
+        <button class="chip active" data-group="expo" data-val="">Todos</button>
+        <button class="chip" data-group="expo" data-val="dolar" style="--chip-color:#d4d4d4">Dolarizado</button>
+        <button class="chip" data-group="expo" data-val="pesos" style="--chip-color:#ffc832">En Pesos</button>
+        <button class="chip" data-group="expo" data-val="crypto" style="--chip-color:#f97316">Crypto</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SELECTION SUMMARY BAR (hidden until rows selected) -->
+  <div class="sel-bar" id="sel-bar">
+    <div class="sel-bar-left">
+      <span class="sel-count" id="sel-count">0 seleccionados</span>
+      <button class="sel-clear" id="sel-clear">✕ Limpiar</button>
+    </div>
+    <div class="sel-stats" id="sel-stats">
+      <div class="sel-stat">
+        <span class="sel-stat-label">USD Total</span>
+        <span class="sel-stat-val" id="sel-usd">—</span>
+      </div>
+      <div class="sel-stat">
+        <span class="sel-stat-label">ARS Total</span>
+        <span class="sel-stat-val" id="sel-ars">—</span>
+      </div>
+      <div class="sel-stat">
+        <span class="sel-stat-label">% del Portfolio</span>
+        <span class="sel-stat-val" id="sel-pct">—</span>
+      </div>
+      <div class="sel-stat">
+        <span class="sel-stat-label">Cantidad activos</span>
+        <span class="sel-stat-val" id="sel-n">—</span>
+      </div>
+      <div class="sel-stat">
+        <span class="sel-stat-label">Plataformas</span>
+        <span class="sel-stat-val" id="sel-alycs">—</span>
+      </div>
+    </div>
+  </div>
+
   <div class="card" style="margin-bottom:32px;border-color:var(--border2)">
     <div class="card-title">
       Posición consolidada
-      <span class="card-title-tag">BALANZ + COCOS + LEMON · 06/03/2026</span>
+      <span class="card-title-tag" id="ten-count-label">— instrumentos</span>
     </div>
     <table class="holdings-table" id="table-consolidated">
       <thead>
         <tr>
+          <th style="width:32px"></th>
           <th>Instrumento</th>
           <th>Tipo</th>
           <th>Plataforma</th>
+          <th>Moneda</th>
           <th>Cantidad</th>
           <th>Precio</th>
           <th>Valor USD</th>
@@ -848,7 +1097,7 @@
           <th style="min-width:130px">Peso %</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody id="tbody-consolidated"></tbody>
     </table>
   </div>
 
@@ -913,7 +1162,7 @@
       </thead>
       <tbody></tbody>
     </table>
-    <div style="margin-top:16px;padding:14px;background:rgba(132,204,22,0.06);border:1px solid rgba(132,204,22,0.15);border-radius:8px;display:flex;align-items:center;gap:12px">
+    <div style="margin-top:16px;padding:14px;background:rgba(132,204,22,0.05);border:1px solid rgba(132,204,22,0.12);border-radius:8px;display:flex;align-items:center;gap:12px">
       <div style="width:8px;height:8px;background:var(--lemon);border-radius:50%;flex-shrink:0"></div>
       <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">
         <span style="color:var(--lemon);font-weight:600">LEMON EARN</span> &nbsp;·&nbsp;
@@ -1135,18 +1384,18 @@
 const MEP = 1433.89;
 
 const BALANZ_HOLDINGS = [
-  { ticker: 'AL30', nombre: 'Bono Rep. Argentina USD Step Up 2030', tipo: 'Bono', cantidad: 1406, precio: 0.60, usd: 850,  ars: 1219846, moneda: 'USD', color: '#3b82f6' },
+  { ticker: 'AL30', nombre: 'Bono Rep. Argentina USD Step Up 2030', tipo: 'Bono', cantidad: 1406, precio: 0.60, usd: 850,  ars: 1219846, moneda: 'USD', color: '#6495ed' },
   { ticker: 'MSFT', nombre: 'CEDEAR Microsoft Corp.', tipo: 'Cedear', cantidad: 52, precio: 14.12, usd: 734, ars: 1052480, moneda: 'USD', color: '#a78bfa' },
-  { ticker: 'ARS',  nombre: 'Pesos argentinos', tipo: 'Cash', cantidad: null, precio: null, usd: 953,  ars: 1366795, moneda: 'ARS', color: '#f59e0b' },
-  { ticker: 'USD',  nombre: 'Dólares', tipo: 'Cash', cantidad: null, precio: null, usd: 3.22, ars: 4620, moneda: 'USD', color: '#22d3ee' },
+  { ticker: 'ARS',  nombre: 'Pesos argentinos', tipo: 'Cash', cantidad: null, precio: null, usd: 953,  ars: 1366795, moneda: 'ARS', color: '#ffc832' },
+  { ticker: 'USD',  nombre: 'Dólares', tipo: 'Cash', cantidad: null, precio: null, usd: 3.22, ars: 4620, moneda: 'USD', color: '#d4d4d4' },
 ];
 
 const COCOS_HOLDINGS = [
-  { ticker: 'GD35',  nombre: 'Bonos Rep. Arg. USD Step Up V.2035', tipo: 'Bono', cantidad: 221, precio: 112900, usd: 174, ars: 249509, moneda: 'ARS', color: '#3b82f6' },
-  { ticker: 'TGNO4', nombre: 'Trans. Gas del Norte Ord. C', tipo: 'Acción', cantidad: 22, precio: 3732.5, usd: 57, ars: 82115, moneda: 'ARS', color: '#10b981' },
+  { ticker: 'GD35',  nombre: 'Bonos Rep. Arg. USD Step Up V.2035', tipo: 'Bono', cantidad: 221, precio: 112900, usd: 174, ars: 249509, moneda: 'ARS', color: '#6495ed' },
+  { ticker: 'TGNO4', nombre: 'Trans. Gas del Norte Ord. C', tipo: 'Acción', cantidad: 22, precio: 3732.5, usd: 57, ars: 82115, moneda: 'ARS', color: '#6dbd8a' },
   { ticker: 'METR',  nombre: 'Metrogas S.A. Escrit. B', tipo: 'Acción', cantidad: 55, precio: 1798, usd: 69, ars: 98890, moneda: 'ARS', color: '#34d399' },
-  { ticker: 'ARS',   nombre: 'Pesos argentinos', tipo: 'Cash', cantidad: null, precio: null, usd: 492, ars: 705853, moneda: 'ARS', color: '#f59e0b' },
-  { ticker: 'USD',   nombre: 'Dólares', tipo: 'Cash', cantidad: null, precio: null, usd: 17.53, ars: 25153, moneda: 'USD', color: '#22d3ee' },
+  { ticker: 'ARS',   nombre: 'Pesos argentinos', tipo: 'Cash', cantidad: null, precio: null, usd: 492, ars: 705853, moneda: 'ARS', color: '#ffc832' },
+  { ticker: 'USD',   nombre: 'Dólares', tipo: 'Cash', cantidad: null, precio: null, usd: 17.53, ars: 25153, moneda: 'USD', color: '#d4d4d4' },
   { ticker: 'EXT',   nombre: 'Cable / Exterior', tipo: 'Cash', cantidad: null, precio: null, usd: 4.55, ars: 6527, moneda: 'EXT', color: '#64748b' },
 ];
 
@@ -1222,8 +1471,8 @@ const CHART_OPTS = {
   plugins: {
     legend: { display: false },
     tooltip: {
-      backgroundColor: '#1c2740',
-      borderColor: '#243352',
+      backgroundColor: '#161616',
+      borderColor: '#2a2a2a',
       borderWidth: 1,
       titleColor: '#94a3b8',
       bodyColor: '#e2e8f0',
@@ -1235,7 +1484,7 @@ const CHART_OPTS = {
 };
 
 const LEMON_HOLDINGS = [
-  { ticker: 'USDT', nombre: 'Dólar digital (Tether)', tipo: 'Stablecoin', cantidad: 1196.43, precio: 1.00, usd: 1196.43, ars: 1698926.91, moneda: 'USDT', color: '#22d3ee' },
+  { ticker: 'USDT', nombre: 'Dólar digital (Tether)', tipo: 'Stablecoin', cantidad: 1196.43, precio: 1.00, usd: 1196.43, ars: 1698926.91, moneda: 'USDT', color: '#d4d4d4' },
   { ticker: 'BTC',  nombre: 'Bitcoin', tipo: 'Crypto', cantidad: 0.00004515, precio: 66520, usd: 3.04, ars: 4366.72, moneda: 'BTC', color: '#f97316' },
   { ticker: 'LUNA', nombre: 'Luna', tipo: 'Crypto', cantidad: 0.01150195, precio: 0.09, usd: 0.001, ars: 1.03, moneda: 'LUNA', color: '#f43f5e' },
 ];
@@ -1247,8 +1496,8 @@ new Chart(document.getElementById('chart-alyc'), {
     labels: ['BALANZ', 'COCOS', 'LEMON'],
     datasets: [{
       data: [2540, 814, 1199],
-      backgroundColor: ['#3b82f6', '#f59e0b', '#84cc16'],
-      borderColor: '#080c14',
+      backgroundColor: ['#6495ed', '#ffc832', '#84cc16'],
+      borderColor: '#0a0a0a',
       borderWidth: 3,
       hoverOffset: 6,
     }]
@@ -1275,8 +1524,8 @@ new Chart(document.getElementById('chart-tipo'), {
     labels: ['Bonos', 'Cedears', 'Acciones', 'Cash ARS', 'USDT', 'BTC', 'Otros'],
     datasets: [{
       data: [1024, 734, 126, 1445, 1196, 3, 26],
-      backgroundColor: ['#3b82f6','#a78bfa','#10b981','#f59e0b','#22d3ee','#f97316','#64748b'],
-      borderColor: '#080c14',
+      backgroundColor: ['#6495ed','#b39dfa','#6dbd8a','#ffc832','#d4d4d4','#f97316','#555555'],
+      borderColor: '#0a0a0a',
       borderWidth: 3,
       hoverOffset: 6,
     }]
@@ -1354,38 +1603,71 @@ renderHoldingsTable('table-balanz', BALANZ_HOLDINGS);
 renderHoldingsTable('table-cocos',  COCOS_HOLDINGS);
 renderHoldingsTable('table-lemon',  LEMON_HOLDINGS);
 
-// ── CONSOLIDATED TABLE ──
-(function() {
-  const ALL_HOLDINGS = [
-    ...BALANZ_HOLDINGS.map(h => ({...h, alyc:'BALANZ'})),
-    ...COCOS_HOLDINGS.map(h  => ({...h, alyc:'COCOS'})),
-    ...LEMON_HOLDINGS.map(h  => ({...h, alyc:'LEMON'})),
-  ];
+// ──────────────────────────────────────────────────────────────────
+// CONSOLIDATED TABLE · FILTERS + INTERACTIVE SELECTION
+// ──────────────────────────────────────────────────────────────────
 
-  // Merge same ticker across platforms (e.g. ARS cash appears in multiple)
-  const merged = {};
-  ALL_HOLDINGS.forEach(h => {
-    const key = h.ticker + '_' + h.alyc; // keep per-platform rows distinct
-    merged[key] = h;
+const ALL_HOLDINGS_FLAT = [
+  ...BALANZ_HOLDINGS.map(h => ({...h, alyc:'BALANZ'})),
+  ...COCOS_HOLDINGS.map(h  => ({...h, alyc:'COCOS'})),
+  ...LEMON_HOLDINGS.map(h  => ({...h, alyc:'LEMON'})),
+];
+
+// Exposure helper
+function expoTag(h) {
+  if (['BTC','LUNA','Crypto','Stablecoin'].includes(h.tipo) || ['BTC','LUNA','USDT'].includes(h.moneda)) return 'crypto';
+  if (h.moneda === 'ARS' && h.tipo === 'Cash') return 'pesos';
+  return 'dolar';
+}
+
+const TOTAL_USD_ALL = ALL_HOLDINGS_FLAT.reduce((s,h) => s + (h.usd||0), 0);
+
+// Active filters state
+const activeFilters = { alyc: '', tipo: '', moneda: '', expo: '' };
+
+// Selected rows state (by index in ALL_HOLDINGS_FLAT)
+const selectedRows = new Set();
+
+function getFiltered() {
+  return ALL_HOLDINGS_FLAT.filter(h => {
+    if (activeFilters.alyc   && h.alyc !== activeFilters.alyc) return false;
+    if (activeFilters.tipo   && h.tipo !== activeFilters.tipo)  return false;
+    if (activeFilters.moneda && h.moneda !== activeFilters.moneda) return false;
+    if (activeFilters.expo   && expoTag(h) !== activeFilters.expo) return false;
+    return true;
   });
-  const rows = Object.values(merged);
-  const totalUsd = rows.reduce((s,h) => s + (h.usd||0), 0);
+}
 
-  const tbody = document.querySelector('#table-consolidated tbody');
+function renderConsolidated() {
+  const filtered = getFiltered().slice().sort((a,b) => (b.usd||0) - (a.usd||0));
+  const tbody = document.getElementById('tbody-consolidated');
   tbody.innerHTML = '';
 
-  // Sort by USD value desc
-  rows.sort((a,b) => (b.usd||0) - (a.usd||0));
+  document.getElementById('ten-count-label').textContent =
+    `${filtered.length} instrumento${filtered.length !== 1 ? 's' : ''} · BALANZ + COCOS + LEMON`;
 
-  rows.forEach(h => {
-    const pct = totalUsd > 0 ? (h.usd / totalUsd * 100) : 0;
+  if (filtered.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="10" class="ten-no-results">Sin resultados para los filtros seleccionados.</td></tr>`;
+    return;
+  }
+
+  filtered.forEach(h => {
+    const idx = ALL_HOLDINGS_FLAT.indexOf(h);
+    const pct = TOTAL_USD_ALL > 0 ? (h.usd / TOTAL_USD_ALL * 100) : 0;
     const alycClass = h.alyc.toLowerCase();
+    const isCrypto = ['BTC','LUNA','USDT'].includes(h.moneda);
+    const decimals = h.cantidad && h.cantidad < 1 ? 8 : 0;
     const priceStr = h.precio !== null
-      ? (h.moneda === 'USD' || h.moneda === 'USDT' || h.moneda === 'BTC' || h.moneda === 'LUNA'
-          ? 'u$s ' : '$ ') + fmt(h.precio, 2)
+      ? (h.moneda === 'ARS' ? '$ ' : 'u$s ') + fmt(h.precio, isCrypto ? 2 : 2)
       : '—';
+    const isSelected = selectedRows.has(idx);
+
     const tr = document.createElement('tr');
+    if (isSelected) tr.classList.add('selected');
+    tr.dataset.idx = idx;
+
     tr.innerHTML = `
+      <td><span class="row-check">${isSelected ? '✓' : ''}</span></td>
       <td>
         <div class="ticker-pill">
           <div class="ticker-dot" style="background:${h.color}"></div>
@@ -1397,7 +1679,8 @@ renderHoldingsTable('table-lemon',  LEMON_HOLDINGS);
       </td>
       <td><span style="color:var(--text-dim);font-size:11px">${h.tipo}</span></td>
       <td><span class="alyc-tag alyc-${alycClass}">${h.alyc}</span></td>
-      <td>${h.cantidad !== null ? fmt(h.cantidad, h.cantidad < 1 ? 8 : 0) : '—'}</td>
+      <td><span class="tipo-badge tipo-otro" style="font-size:9px">${h.moneda}</span></td>
+      <td style="color:var(--text-dim)">${h.cantidad !== null ? fmt(h.cantidad, decimals) : '—'}</td>
       <td style="color:var(--text-dim)">${priceStr}</td>
       <td style="color:var(--cyan)">USD ${fmt(h.usd, 2)}</td>
       <td style="color:var(--text-dim)">$ ${fmt(h.ars)}</td>
@@ -1410,21 +1693,65 @@ renderHoldingsTable('table-lemon',  LEMON_HOLDINGS);
         </div>
       </td>
     `;
+
+    tr.addEventListener('click', () => toggleRow(idx));
     tbody.appendChild(tr);
   });
 
-  // Totals
-  const totalArs = rows.reduce((s,h) => s + (h.ars||0), 0);
-  const tr = document.createElement('tr');
-  tr.style.borderTop = '2px solid var(--border2)';
-  tr.innerHTML = `
-    <td colspan="5" style="color:var(--text-dim);font-size:11px;letter-spacing:1px;text-transform:uppercase">TOTAL CONSOLIDADO</td>
-    <td style="color:var(--cyan);font-weight:600">USD ${fmt(totalUsd, 2)}</td>
-    <td style="color:var(--text-dim);font-weight:600">$ ${fmt(totalArs)}</td>
-    <td></td>
-  `;
-  tbody.appendChild(tr);
-})();
+  updateSelectionBar();
+}
+
+function toggleRow(idx) {
+  if (selectedRows.has(idx)) selectedRows.delete(idx);
+  else selectedRows.add(idx);
+  renderConsolidated();
+}
+
+function updateSelectionBar() {
+  const bar = document.getElementById('sel-bar');
+  const n = selectedRows.size;
+
+  if (n === 0) {
+    bar.classList.remove('visible');
+    return;
+  }
+
+  bar.classList.add('visible');
+  const selected = [...selectedRows].map(i => ALL_HOLDINGS_FLAT[i]);
+
+  const sumUsd = selected.reduce((s,h) => s + (h.usd||0), 0);
+  const sumArs = selected.reduce((s,h) => s + (h.ars||0), 0);
+  const pctPortfolio = TOTAL_USD_ALL > 0 ? (sumUsd / TOTAL_USD_ALL * 100) : 0;
+  const alycs = [...new Set(selected.map(h => h.alyc))].join(' · ');
+
+  document.getElementById('sel-count').textContent = `${n} seleccionado${n !== 1 ? 's' : ''}`;
+  document.getElementById('sel-usd').textContent   = `USD ${fmt(sumUsd, 2)}`;
+  document.getElementById('sel-ars').textContent   = `$ ${fmt(sumArs)}`;
+  document.getElementById('sel-pct').textContent   = `${pctPortfolio.toFixed(2)}%`;
+  document.getElementById('sel-n').textContent     = n;
+  document.getElementById('sel-alycs').textContent = alycs;
+}
+
+// Chips
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    const group = chip.dataset.group;
+    const val   = chip.dataset.val;
+    // deactivate all in group
+    document.querySelectorAll(`.chip[data-group="${group}"]`).forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    activeFilters[group] = val;
+    renderConsolidated();
+  });
+});
+
+// Clear selection
+document.getElementById('sel-clear').addEventListener('click', () => {
+  selectedRows.clear();
+  renderConsolidated();
+});
+
+renderConsolidated();
 
 // ──────────────────────────────────────────────────────────────────
 // COMPARATIVA BAR CHART
@@ -1438,23 +1765,23 @@ new Chart(document.getElementById('chart-compare-bar'), {
       {
         label: 'BALANZ',
         data: [1219846, 1052480, 0, 1366795, 4620, 0],
-        backgroundColor: 'rgba(59,130,246,0.7)',
-        borderColor: '#3b82f6',
+        backgroundColor: 'rgba(100,149,237,0.65)',
+        borderColor: '#6495ed',
         borderWidth: 1,
         borderRadius: 4,
       },
       {
         label: 'COCOS',
         data: [249509, 0, 181005, 705853, 25153 + 6527, 0],
-        backgroundColor: 'rgba(245,158,11,0.7)',
-        borderColor: '#f59e0b',
+        backgroundColor: 'rgba(255,200,50,0.65)',
+        borderColor: '#ffc832',
         borderWidth: 1,
         borderRadius: 4,
       },
       {
         label: 'LEMON',
         data: [0, 0, 0, 0, 0, 1703294],
-        backgroundColor: 'rgba(132,204,22,0.7)',
+        backgroundColor: 'rgba(132,204,22,0.65)',
         borderColor: '#84cc16',
         borderWidth: 1,
         borderRadius: 4,
@@ -1467,13 +1794,13 @@ new Chart(document.getElementById('chart-compare-bar'), {
     maintainAspectRatio: false,
     scales: {
       x: {
-        grid: { color: 'rgba(30,45,71,0.6)' },
-        ticks: { color: '#475569', font: { family: 'JetBrains Mono', size: 10 } },
+        grid: { color: 'rgba(255,255,255,0.05)' },
+        ticks: { color: '#555555', font: { family: 'JetBrains Mono', size: 10 } },
       },
       y: {
-        grid: { color: 'rgba(30,45,71,0.6)' },
+        grid: { color: 'rgba(255,255,255,0.05)' },
         ticks: {
-          color: '#475569',
+          color: '#555555',
           font: { family: 'JetBrains Mono', size: 10 },
           callback: v => '$ ' + (v >= 1e6 ? (v/1e6).toFixed(1)+'M' : (v/1e3).toFixed(0)+'k')
         },
