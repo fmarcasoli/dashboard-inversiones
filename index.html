@@ -347,7 +347,7 @@
     border-bottom: 1px solid var(--border);
   }
 
-  .holdings-table th:not(:first-child) { text-align: right; }
+  .holdings-table th:not(:first-child):not(:nth-child(2)) { text-align: right; }
 
   .holdings-table td {
     font-family: var(--font-mono);
@@ -357,7 +357,7 @@
     vertical-align: middle;
   }
 
-  .holdings-table td:not(:first-child) { text-align: right; }
+  .holdings-table td:not(:first-child):not(:nth-child(2)) { text-align: right; }
 
   .holdings-table tr:last-child td { border-bottom: none; }
 
